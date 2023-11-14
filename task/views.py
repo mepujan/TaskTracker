@@ -9,6 +9,7 @@ class TaskListView(ListView):
     model = Task
     # context_object_name = 'tasks'
     template_name = 'task-list.html'
+    paginate_by = 10
 
 
 class TaskCreateView(CreateView):
