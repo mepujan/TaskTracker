@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<a class="btn btn-primary" href="{% url 'add-task'%}" role="button">Add New Task</a>
+<h2>Task List</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Descriptions</th>
+            <th scope="col">Status</th>
+            <th scope="col">Due Date</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for task in object_list %}
+        <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{task.title}}</td>
+            <td>{{task.descriptions}}</td>
+            <td>{{task.due_date}}</td>
+            <td>{{task.status}}</td>
+            <td>
+                <a class="btn btn-info" href="{% url 'update-task' task.id%}" role="button">Update</a>
+            </td>
+            <td>
+                <a class="btn btn-danger" href="{% url 'delete-task' task.id%}" role="button">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}
